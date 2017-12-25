@@ -1,0 +1,4 @@
+{% autoescape off %}
+User {{ username }} invite you
+http://{{ site }}{% url 'main:register_user' %}/?team={{ team }}
+{% endautoescape %}

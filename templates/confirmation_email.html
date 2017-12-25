@@ -1,0 +1,4 @@
+{% autoescape off %}
+Confirm your email
+http://{{ site }}{% url 'main:confirm' uidb64=uid token=token %}
+{% endautoescape %}
