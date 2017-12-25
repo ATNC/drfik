@@ -129,26 +129,12 @@ EMAIL_HOST_USER = 'tandemloved@gmail.com'
 EMAIL_HOST_PASSWORD = 'Y2RsOGdiNzJiZnYw'
 EMAIL_PORT = 2525
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-PROJECT_NAME = os.path.basename(BASE_DIR)
-def get_static_dir(apps):
-    l = []
-    if os.path.isdir(os.path.join(os.path.dirname(__file__), '..', 'bower_components')):
-        l.append(os.path.join(os.path.dirname(__file__), '..', 'bower_components'))
-    if os.path.isdir(os.path.join(BASE_DIR, PROJECT_NAME, 'static')):
-        l.append(os.path.join(BASE_DIR, PROJECT_NAME, 'static'))
-    for app in apps:
-        try:
-            app_static_path = os.path.join(BASE_DIR, 'applications', app.split('applications.')[1], 'static')
-            if os.path.isdir(app_static_path):
-                l.append(app_static_path)
-        except:
-            pass
-    return tuple(l)
-
-STATICFILES_DIRS = get_static_dir(INSTALLED_APPS)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
